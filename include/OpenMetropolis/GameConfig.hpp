@@ -59,8 +59,8 @@ public:
 		return rval;
 	}
 
-	template<>
-	bool Get<bool>(std::string section, std::string key, bool defaultVal) const
+	
+	bool GetBool(std::string section, std::string key, bool defaultVal) const
 	{
 		std::string val = GetString(section, key, "");
 		if (val == "")

@@ -139,7 +139,7 @@ std::string GameConfig::GetString(std::string section, std::string key, std::str
 	std::transform(section.begin(), section.end(), section.begin(), toupper);
 	std::transform(key.begin(), key.end(), key.begin(), toupper);
 
-	auto p = std::find_if(m_sections.begin(), m_sections.end(), [&](const ConfigSection& sect) { return sect.m_name == section; });
+	auto p = std::find_if(m_sections.begin(), m_sections.end(), [section](const ConfigSection& sect) { return sect.m_name == section; });
 
 	return p->m_kv.at(key);
 }
@@ -148,7 +148,7 @@ bool GameConfig::SectionExists(std::string section) const
 {
 	// Section to uppercase
 	std::transform(section.begin(), section.end(), section.begin(), toupper);
-	auto p = std::find_if(m_sections.begin(), m_sections.end(), [&](const ConfigSection& sect) { return sect.m_name == section; });
+	auto p = std::find_if(m_sections.begin(), m_sections.end(), [section](const ConfigSection& sect) { return sect.m_name == section; });
 	return (p != m_sections.end());
 }
 
@@ -159,7 +159,7 @@ bool GameConfig::KeyExists(std::string section, std::string key) const
 	std::transform(key.begin(), key.end(), key.begin(), toupper);
 
 	// Get the requested sections index.
-	auto& sectionIdx = std::find_if(m_sections.begin(), m_sections.end(), [&](const ConfigSection& sect) { return sect.m_name == section; });
+	auto sectionIdx = std::find_if(m_sections.begin(), m_sections.end(), [section](const ConfigSection& sect) { return sect.m_name == section; });
 
 	// Section doesn't exist if we made it to the end of the loop.
 	if (sectionIdx == m_sections.end())
