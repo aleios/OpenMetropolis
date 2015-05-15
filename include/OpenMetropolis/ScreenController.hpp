@@ -38,9 +38,14 @@ public:
 	
 	virtual void PushScreen(std::shared_ptr<Screen>& screen, Modality modality = Modality::Exclusive) = 0;
 	virtual void PopScreen() = 0;
+
+	void Quit() { m_isQuitting = true; }
+	bool IsQuitting() const { return m_isQuitting; }
 	
 	sf::RenderWindow& GetWindow() const { return m_window; }
 	
+protected:
+	bool m_isQuitting{ false };
 private:
 	sf::RenderWindow& m_window;
 };

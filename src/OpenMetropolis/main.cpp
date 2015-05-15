@@ -18,10 +18,21 @@ along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include <OpenMetropolis/ScreenManager.hpp>
+
+#include <OpenMetropolis/GameScreen.hpp>
+
 int main(int argc, char** argv)
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Open Metropolis");
+	window.setFramerateLimit(60);
 
+	auto manager = std::make_shared<ScreenManager>(window);
+
+	std::shared_ptr<Screen> initialScreen = std::make_shared<GameScreen>(manager);
+	manager->PushScreen(initialScreen);
+
+	sf::Clock gameClock;
 	while (window.isOpen())
 	{
 		sf::Event ev;
@@ -30,8 +41,12 @@ int main(int argc, char** argv)
 			if (ev.type == sf::Event::Closed)
 				window.close();
 		}
+		// Update
+		manager->Update(gameClock.getElapsedTime());
 
+		// Draw
 		window.clear();
+		manager->Draw();
 		window.display();
 	}
 

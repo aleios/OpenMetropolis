@@ -18,6 +18,12 @@ along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 #include <OpenMetropolis/ScreenManager.hpp>
 #include <OpenMetropolis/Screen.hpp>
 
+ScreenManager::ScreenManager(sf::RenderWindow& window)
+	: ScreenController(window)
+{
+
+}
+
 void ScreenManager::PushScreen(std::shared_ptr<Screen>& screen, Modality modality)
 {
 	screen->OnEnter();
@@ -69,4 +75,16 @@ void ScreenManager::RebuildLists()
 		m_screenQueue.push_back(m_screens[index].first.get());
 		++index;
 	}
+}
+
+void ScreenManager::Update(const sf::Time& timeElapsed)
+{
+	for (auto& screen : m_screenQueue)
+		screen->Update(timeElapsed);
+}
+
+void ScreenManager::Draw()
+{
+	for (auto& screen : m_screenQueue)
+		screen->Draw();
 }

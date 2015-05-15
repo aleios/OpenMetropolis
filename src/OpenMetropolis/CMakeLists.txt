@@ -7,11 +7,17 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 # SFML includes
 include_directories(${SFML_INCLUDE_DIR})
 
+# Boost includes
+include_directories(${Boost_INCLUDE_DIR})
+
 # Sources and Includes for the project
 set(SRC 
 	${SRC_ROOT}/main.cpp
 	
 	${SRC_ROOT}/ScreenManager.cpp
+	${SRC_ROOT}/GameConfig.cpp
+
+	${SRC_ROOT}/GameScreen.cpp
 	)
 
 set(INC 
@@ -19,6 +25,10 @@ set(INC
 	${INC_ROOT}/ScreenController.hpp
 	${INC_ROOT}/ScreenManager.hpp
 	${INC_ROOT}/Modality.hpp
+	${INC_ROOT}/GameConfig.hpp
+
+	${INC_ROOT}/EditorScreen.hpp
+	${INC_ROOT}/GameScreen.hpp
 	)
 
 add_executable(${PROJECT_NAME} ${SRC} ${INC})
