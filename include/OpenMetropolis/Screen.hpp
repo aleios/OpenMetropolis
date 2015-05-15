@@ -24,19 +24,24 @@ along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 namespace sf
 {
 	class Time;
+	class Event;
 }
 
 class ScreenController;
 class Screen
 {
 public:
-	Screen(std::shared_ptr<ScreenController> controller);
+	Screen(std::shared_ptr<ScreenController> controller)
+		: m_controller(controller)
+	{
+	}
+
 	virtual ~Screen() {}
 	
 	virtual void OnEnter() = 0;
 	virtual void OnLeave() = 0;
 	
-	virtual void Update() = 0;
+	virtual void Update(const sf::Time& timeElapsed) = 0;
 	virtual void Draw() = 0;
 protected:
 	std::shared_ptr<ScreenController> m_controller;

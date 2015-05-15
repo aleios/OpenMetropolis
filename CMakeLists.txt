@@ -14,5 +14,6 @@ set(VERSION_MINOR 1)
 set(VERSION_PATCH 0)
 
 find_package(SFML 2 COMPONENTS system graphics audio window REQUIRED)
+find_package(Boost 1.57.0 REQUIRED)
 
 add_subdirectory(src/${PROJECT_NAME})

@@ -16,36 +16,25 @@ along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-#ifndef SCREENMANAGER_HPP
-#define SCREENMANAGER_HPP
+#ifndef GAMESCREEN_HPP
+#define GAMESCREEN_HPP
 
-#include <OpenMetropolis/ScreenController.hpp>
-#include <vector>
+#include <OpenMetropolis/Screen.hpp>
 
-namespace sf
-{
-	class Time;
-	class Event;
-}
-
-class ScreenManager
-	: public ScreenController
+class GameScreen
+	: public Screen
 {
 public:
-	ScreenManager(sf::RenderWindow& window);
-	
-	virtual void PushScreen(std::shared_ptr<Screen>& screen, Modality modality = Modality::Exclusive) override;
-	virtual void PopScreen() override;
-	void Clear();
-	
-	void Update(const sf::Time& timeElapsed);
-	void Draw();
-private:
-	void RebuildLists();
+	GameScreen(std::shared_ptr<ScreenController> controller);
 
-	typedef std::pair<std::shared_ptr<Screen>, Modality> ModalPair;
-	std::vector<ModalPair> m_screens;
-	std::vector<Screen*> m_screenQueue;
+	virtual void OnEnter() override;
+	virtual void OnLeave() override;
+
+	virtual void Update(const sf::Time& timeElapsed) override;
+	virtual void Draw() override;
+
+private:
+
 };
 
 #endif
