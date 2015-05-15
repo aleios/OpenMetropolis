@@ -16,4 +16,8 @@ set(VERSION_PATCH 0)
 find_package(SFML 2 COMPONENTS system graphics audio window REQUIRED)
 find_package(Boost 1.57.0 REQUIRED)
 
+if(UNIX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++0x")
+endif()
+
 add_subdirectory(src/${PROJECT_NAME})
