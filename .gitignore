@@ -172,6 +172,8 @@ ClientBin/
 *.publishsettings
 node_modules/
 bower_components/
+.ycm_extra_conf.pyc
+.ycm_extra_conf.py
 
 # RIA/Silverlight projects
 Generated_Code/
@@ -249,3 +251,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Swap *nix
+*.swp
