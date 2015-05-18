@@ -17,7 +17,10 @@ set(SRC
 	${SRC_ROOT}/ScreenManager.cpp
 	${SRC_ROOT}/GameConfig.cpp
 
+   ${SRC_ROOT}/EditorScreen.cpp
 	${SRC_ROOT}/GameScreen.cpp
+
+   ${SRC_ROOT}/City.cpp
 	)
 
 set(INC 
@@ -29,6 +32,8 @@ set(INC
 
 	${INC_ROOT}/EditorScreen.hpp
 	${INC_ROOT}/GameScreen.hpp
+
+   ${INC_ROOT}/City.hpp
 	)
 
 add_executable(${PROJECT_NAME} ${SRC} ${INC})

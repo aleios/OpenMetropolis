@@ -19,19 +19,25 @@ along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 #include <SFML/Graphics.hpp>
 
 #include <OpenMetropolis/ScreenManager.hpp>
-
 #include <OpenMetropolis/GameScreen.hpp>
+#include <OpenMetropolis/GameConfig.hpp>
 
 int main(int argc, char** argv)
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Open Metropolis");
+   GameConfig config;
+   config.Load("assets/settings.ini");
+   
+   auto windowWidth = config.Get<unsigned int>("graphics", "windowwidth", 800);
+   auto windowHeight = config.Get<unsigned int>("graphics", "windowheight", 600);
+
+	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Open Metropolis");
 	window.setFramerateLimit(60);
 
 	auto manager = std::make_shared<ScreenManager>(window);
 
 	std::shared_ptr<Screen> initialScreen = std::make_shared<GameScreen>(manager);
 	manager->PushScreen(initialScreen);
-
+   
 	sf::Clock gameClock;
 	while (window.isOpen())
 	{

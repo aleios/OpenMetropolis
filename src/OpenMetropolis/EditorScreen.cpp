@@ -14,31 +14,30 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <OpenMetropolis/GameScreen.hpp>
+
+#include <OpenMetropolis/EditorScreen.hpp>
 #include <OpenMetropolis/ScreenController.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/System/Time.hpp>
 
-GameScreen::GameScreen(std::shared_ptr<ScreenController> controller)
-	: Screen(controller)
+EditorScreen::EditorScreen(std::shared_ptr<ScreenController> controller)
+   : Screen(controller)
 {
 }
 
-void GameScreen::OnEnter()
-{  
-   m_defaultFont.loadFromFile("assets/fonts/Oxygen-Regular.ttf");
-   m_text.setFont(m_defaultFont);
-   m_text.setString("Hello, World");
+void EditorScreen::OnEnter()
+{
 }
 
-void GameScreen::OnLeave()
-{    
+void EditorScreen::OnLeave()
+{
 }
 
-void GameScreen::Update(const sf::Time& timeElapsed)
+void EditorScreen::Update(const sf::Time& timeElapsed)
 {
    auto& window = m_controller->GetWindow();
+   
    sf::Event ev;
    while(window.pollEvent(ev))
    {
@@ -47,8 +46,6 @@ void GameScreen::Update(const sf::Time& timeElapsed)
    }
 }
 
-void GameScreen::Draw()
+void EditorScreen::Draw()
 {
-   auto& window = m_controller->GetWindow();
-   window.draw(m_text);
 }
