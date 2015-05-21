@@ -28,6 +28,46 @@ along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 #include <cctype>
 #include <locale>
 
+namespace detail
+{
+   template<class T>
+   inline T GetValue(const std::string& value, T defaultVal)
+   {
+      T rval;
+      try
+      {
+         rval = boost::lexical_cast<T>(value);
+      }
+      catch(boost::bad_lexical_cast)
+      {
+         return defaultVal;
+      }
+      return rval;
+   }
+
+   template<>
+   inline bool GetValue(const std::string& value, bool defaultVal)
+   {
+      // Make uppercase
+      std::string val = value;
+      std::transform(val.begin(), val.end(), val.begin(), ::toupper);
+
+      int numVal = 0;
+      try
+      {
+         numVal = boost::lexical_cast<int>(val);
+      }
+      catch(boost::bad_lexical_cast)
+      {
+         numVal = 0;
+      }
+
+      if(val == "TRUE" || numVal > 0)
+         return true;
+      return false;
+   }
+}
+
 class GameConfig
 {
 public:
@@ -43,45 +83,11 @@ public:
 	T Get(std::string section, std::string key, T defaultVal) const
 	{
 		std::string val = GetString(section, key, "");
-		if (val == "")
-			return defaultVal;
-
-		T rval;
-		try
-		{
-			rval = boost::lexical_cast<T>(val);
-		}
-		catch (boost::bad_lexical_cast)
-		{
-			return defaultVal;
-		}
-
-		return rval;
+      if(val == "")
+         return defaultVal;
+		return detail::GetValue<T>(val, defaultVal);
 	}
-
 	
-	bool GetBool(std::string section, std::string key, bool defaultVal) const
-	{
-		std::string val = GetString(section, key, "");
-		if (val == "")
-			return defaultVal;
-
-		std::transform(val.begin(), val.end(), val.begin(), ::toupper);
-
-		int numVal = 0;
-		try
-		{
-			numVal = boost::lexical_cast<int>(val);
-		}
-		catch (boost::bad_lexical_cast)
-		{
-			numVal = 0;
-		}
-
-		if (val == "TRUE" || numVal > 0)
-			return true;
-		return false;
-	}
 private:
 	struct ConfigSection
 	{

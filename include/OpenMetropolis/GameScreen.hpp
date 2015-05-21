@@ -21,6 +21,12 @@ along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <OpenMetropolis/Screen.hpp>
 
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/View.hpp>
+
+#include <OpenMetropolis/City.hpp>
+
 class GameScreen
 	: public Screen
 {
@@ -34,7 +40,13 @@ public:
 	virtual void Draw() override;
 
 private:
+   //void SetBackgroundTile(unsigned int index, unsigned int tileID);
+private:
+   sf::Font m_defaultFont;
+   sf::Text m_text;
+   sf::View m_view;
 
+   City m_city;
 };
 
 #endif

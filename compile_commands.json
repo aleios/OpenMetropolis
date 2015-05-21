@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/aleios/Desktop/projects/OpenMetropolis/build/src/OpenMetropolis",
+  "command": "/usr/bin/clang++     -Wall -std=c++0x -I/home/aleios/Desktop/projects/OpenMetropolis/include    -o CMakeFiles/OpenMetropolis.dir/main.cpp.o -c /home/aleios/Desktop/projects/OpenMetropolis/src/OpenMetropolis/main.cpp",
+  "file": "/home/aleios/Desktop/projects/OpenMetropolis/src/OpenMetropolis/main.cpp"
+},
+{
+  "directory": "/home/aleios/Desktop/projects/OpenMetropolis/build/src/OpenMetropolis",
+  "command": "/usr/bin/clang++     -Wall -std=c++0x -I/home/aleios/Desktop/projects/OpenMetropolis/include    -o CMakeFiles/OpenMetropolis.dir/ScreenManager.cpp.o -c /home/aleios/Desktop/projects/OpenMetropolis/src/OpenMetropolis/ScreenManager.cpp",
+  "file": "/home/aleios/Desktop/projects/OpenMetropolis/src/OpenMetropolis/ScreenManager.cpp"
+},
+{
+  "directory": "/home/aleios/Desktop/projects/OpenMetropolis/build/src/OpenMetropolis",
+  "command": "/usr/bin/clang++     -Wall -std=c++0x -I/home/aleios/Desktop/projects/OpenMetropolis/include    -o CMakeFiles/OpenMetropolis.dir/GameConfig.cpp.o -c /home/aleios/Desktop/projects/OpenMetropolis/src/OpenMetropolis/GameConfig.cpp",
+  "file": "/home/aleios/Desktop/projects/OpenMetropolis/src/OpenMetropolis/GameConfig.cpp"
+},
+{
+  "directory": "/home/aleios/Desktop/projects/OpenMetropolis/build/src/OpenMetropolis",
+  "command": "/usr/bin/clang++     -Wall -std=c++0x -I/home/aleios/Desktop/projects/OpenMetropolis/include    -o CMakeFiles/OpenMetropolis.dir/GameScreen.cpp.o -c /home/aleios/Desktop/projects/OpenMetropolis/src/OpenMetropolis/GameScreen.cpp",
+  "file": "/home/aleios/Desktop/projects/OpenMetropolis/src/OpenMetropolis/GameScreen.cpp"
+}
+]

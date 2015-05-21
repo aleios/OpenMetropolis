@@ -29,6 +29,8 @@ int main(int argc, char** argv)
    
    auto windowWidth = config.Get<unsigned int>("graphics", "windowwidth", 800);
    auto windowHeight = config.Get<unsigned int>("graphics", "windowheight", 600);
+   
+   auto fullscreen = config.Get<bool>("graphics", "fullscreen", false);
 
 	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Open Metropolis");
 	window.setFramerateLimit(60);
