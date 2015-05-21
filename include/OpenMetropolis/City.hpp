@@ -22,7 +22,7 @@ along with OpenMetropolis.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <vector>
 #include <SFML/Graphics/VertexArray.hpp>
-#include <SMLL/Graphics/Drawable.hpp>
+#include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/System/Time.hpp>
 
@@ -70,7 +70,7 @@ public:
    unsigned int GetTileWidth() const { return m_tileWidth; }
    unsigned int GetTileHeight() const { return m_tileHeight; }
 
-   virtual void draw(sf::RenderTarget& target, sf::RenderStates states) override;
+   virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:
    int m_cash{ 50000 }, m_loan{ 0 };
 

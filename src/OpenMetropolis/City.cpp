@@ -57,7 +57,7 @@ bool City::Save(const std::string& filename)
    return true;
 }
 
-void City::draw(sf::RenderTarget& target, sf::RenderStates states)
+void City::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
    // Draw background
    states.texture = &m_backgroundTex;
